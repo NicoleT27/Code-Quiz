@@ -1,0 +1,43 @@
+:root {
+  --font-style: "Ubuntu", sans-serif;
+}
+* {
+  font-family: var(--font-style);
+}
+header,
+p,
+button {
+  margin-top: 200px;
+}
+.highscore {
+  text-decoration: none;
+  font-size: 20px;
+  padding-left: 20px;
+}
+header {
+  font-size: 20px;
+  text-align: center;
+}
+p {
+  font-size: 25px;
+  overflow-wrap: break-word;
+  inline-size: 700px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  text-align: center;
+}
+button {
+  background-color: blueviolet;
+  color: white;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: 20px;
+  margin: 0 auto;
+  display: block;
+}
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  p {
+    overflow-wrap: break-word;
+    inline-size: 600px;
+  }
+}
