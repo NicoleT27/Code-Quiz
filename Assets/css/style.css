@@ -4,21 +4,20 @@
 * {
   font-family: var(--font-style);
 }
-header,
-p,
-button {
+#questions,
+#answers,
+#startBtn {
   margin-top: 200px;
 }
 .highscore {
   text-decoration: none;
   font-size: 20px;
-  padding-left: 20px;
 }
-header {
+#questions {
   font-size: 20px;
   text-align: center;
 }
-p {
+#answers {
   font-size: 25px;
   overflow-wrap: break-word;
   inline-size: 700px;
@@ -26,7 +25,7 @@ p {
   padding-bottom: 30px;
   text-align: center;
 }
-button {
+#startBtn {
   background-color: blueviolet;
   color: white;
   border-radius: 5px;
@@ -35,9 +34,18 @@ button {
   margin: 0 auto;
   display: block;
 }
+#startBtn:hover {
+  background-color: rgb(238, 98, 238);
+  transition: all 150ms ease-in-out;
+}
+.exampleBtn {
+  display: none;
+}
+
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  p {
+  #answers {
     overflow-wrap: break-word;
     inline-size: 600px;
   }
 }
+
