@@ -4,8 +4,8 @@
 * {
   font-family: var(--font-style);
 }
-#questions,
-#answers,
+#header,
+#subHeading,
 #startBtn {
   margin-top: 200px;
 }
@@ -13,11 +13,11 @@
   text-decoration: none;
   font-size: 20px;
 }
-#questions {
+#header {
   font-size: 20px;
   text-align: center;
 }
-#answers {
+#subHeading {
   font-size: 25px;
   overflow-wrap: break-word;
   inline-size: 700px;
@@ -25,7 +25,8 @@
   padding-bottom: 30px;
   text-align: center;
 }
-#startBtn {
+#startBtn,
+.button {
   background-color: blueviolet;
   color: white;
   border-radius: 5px;
@@ -34,18 +35,22 @@
   margin: 0 auto;
   display: block;
 }
-#startBtn:hover {
+#startBtn:hover,
+.button:hover {
   background-color: rgb(238, 98, 238);
   transition: all 150ms ease-in-out;
 }
-.exampleBtn {
+
+.hide {
   display: none;
+}
+.show {
+  display: block;
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
-  #answers {
+  #subHeading {
     overflow-wrap: break-word;
     inline-size: 600px;
   }
 }
-
