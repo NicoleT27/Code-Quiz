@@ -13,17 +13,37 @@
     />
   </head>
   <body>
-    <a href="" class="highscore">View high scores</a>
-    <header id="questions">
+    <div>
+      <a
+        href=""
+        class="highscore"
+        style="float: left; margin-top: -170px; margin-left: 20px"
+        >View high scores</a
+      >
+    </div>
+    <div
+      style="
+        float: right;
+        margin-right: 40px;
+        font-size: 20px;
+        margin-top: -165px;
+      "
+    >
+      Time:<span id="timeId"></span>
+    </div>
+    <header id="header">
       <h1>Coding Quiz Challange</h1>
     </header>
     <main>
-      <p id="answers">
+      <p id="subHeading">
         Try to answer the code-related questions within the time limit. Keep in
         mind that incorrect answers will penalize your score/time by 10 seconds!
       </p>
       <button type="button" id="startBtn">Start Quiz</button>
-      <button type="button" class="exampleBtn">Example Button</button>
+      <div id="questions" class="hide">
+        <p id="questionTitle">Hello</p>
+        <div id="choices"></div>
+      </div>
     </main>
     <script src="Assets/js/script.js"></script>
   </body>
