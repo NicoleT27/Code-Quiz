@@ -1,32 +1,27 @@
 var button1 = document.querySelector("#startBtn");
 let header = document.querySelector("#header");
 let subHeading = document.querySelector("#subHeading");
+var counter = 0;
 
 function startQuiz() {
-  header.setAttribute(
-    "style",
-    "font-size: 30px; text-align: center; font-weight:bold; margin-top:200px;"
-  );
-  subHeading.setAttribute(
-    "style",
-    "font-size: 45px; text-align: center; font-weight:bold; margin-top:200px;"
-  );
-
   button1.setAttribute("style", "display: none;");
+  header.innerText = null;
   subHeading.innerText = null;
   startTime();
   showQuestion();
 }
 
 function startTime() {
-  var minutesLeft = 20;
+  console.log("start time is running");
+  var secondsLeft = 20;
   var timer = setInterval(function () {
-    document.querySelector("#timeId").innerHTML = minutesLeft;
-    minutesLeft--;
-    if (minutesLeft <= 0) {
+    document.querySelector("#timeId").innerHTML = secondsLeft;
+    secondsLeft--;
+    console.log("timer is running");
+    if (secondsLeft <= 0) {
       clearInterval(timer);
     }
-  }, 60000);
+  }, 1000);
 }
 
 startBtn.addEventListener("click", startQuiz);
@@ -49,17 +44,21 @@ function showQuestion() {
       correctA: "4",
     },
   ];
+  var questions = document.getElementById("questions");
+  questions.classList.remove("hide");
+  var currentQuestion = multiChoice[counter];
+  questions.classList.add("show");
+  var questionsTitle = document.getElementById("questionTitle");
+  questionsTitle.innerHTML = currentQuestion.title;
 
-  for (let i = 0; i < multiChoice.length; i++) {
-    var questionsTitle = document.getElementById("#questionTitle");
-    questionsTitle.innerHTML = showQuestion.title;
-
-    if (questions === "hide") {
-      questions.setAttribute("class", "show");
-      questions = show;
-    } else {
-      questions = hide;
-    }
+  for (let i = 0; i < currentQuestion.choices.length; i++) {
+    var currentChoice = currentQuestion.choices[i];
+    var button = document.createElement("button");
+    button.innerText = currentChoice;
+    button.setAttribute("class", "options");
+    document.getElementById("choices").appendChild(button);
   }
+  button.addEventListener("click", function () {
+    alert("I have been clicked");
+  });
 }
-showQuestion();
