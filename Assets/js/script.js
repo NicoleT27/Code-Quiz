@@ -1,27 +1,28 @@
 var button1 = document.querySelector("#startBtn");
-let header = document.querySelector("#header");
-let subHeading = document.querySelector("#subHeading");
+var header = document.querySelector("#header");
+var subHeading = document.querySelector("#subHeading");
+var countdown = document.getElementById("countdown");
 var counter = 0;
 
 function startQuiz() {
   button1.setAttribute("style", "display: none;");
   header.innerText = null;
   subHeading.innerText = null;
-  startTime();
+  setInterval(startTime, 1000);
   showQuestion();
 }
 
+var startingMinutes = 10;
+var time = startingMinutes * 60;
+
 function startTime() {
-  console.log("start time is running");
-  var secondsLeft = 20;
-  var timer = setInterval(function () {
-    document.querySelector("#timeId").innerHTML = secondsLeft;
-    secondsLeft--;
-    console.log("timer is running");
-    if (secondsLeft <= 0) {
-      clearInterval(timer);
-    }
-  }, 1000);
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+
+  seconds = seconds < 10 ? "0" + seconds : seconds;
+
+  countdown.innerHTML = ` ${minutes} : ${seconds}`;
+  time--;
 }
 
 startBtn.addEventListener("click", startQuiz);
@@ -59,6 +60,6 @@ function showQuestion() {
     document.getElementById("choices").appendChild(button);
   }
   button.addEventListener("click", function () {
-    alert("I have been clicked");
+    alert("hello");
   });
 }
