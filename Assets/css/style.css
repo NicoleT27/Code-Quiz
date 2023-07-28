@@ -47,6 +47,29 @@
 .show {
   display: block;
 }
+#questions {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: var(--font-style);
+}
+#questionTitle {
+  margin-top: -80px;
+}
+.options {
+  background-color: blueviolet;
+  font-family: var(--font-style);
+  font-size: 60px;
+  border-radius: 5px;
+  display: block;
+  margin-left: 490px;
+  padding-right: 600px;
+  margin-top: 30px;
+}
+.options:hover {
+  background-color: rgb(238, 98, 238);
+  transition: all 150ms ease-in-out;
+}
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
   #subHeading {
@@ -54,3 +77,5 @@
     inline-size: 600px;
   }
 }
+
+
