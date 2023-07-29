@@ -2,6 +2,7 @@ var button1 = document.querySelector("#startBtn");
 var header = document.querySelector("#header");
 var subHeading = document.querySelector("#subHeading");
 var countdown = document.getElementById("countdown");
+var hr = document.createElement("hr");
 var counter = 0;
 
 function startQuiz() {
@@ -58,8 +59,20 @@ function showQuestion() {
     button.innerText = currentChoice;
     button.setAttribute("class", "options");
     document.getElementById("choices").appendChild(button);
+
+    button.addEventListener("click", function (event) {
+      var buttonResult = event.target.innerText;
+
+      if (buttonResult === currentQuestion.correctA) {
+        document.getElementById("choices").appendChild(hr);
+        var textNode = document.createTextNode("Correct!");
+        document.body.appendChild(textNode);
+      } else {
+        document.getElementById("choices").appendChild(hr);
+        var textNode = document.createTextNode("Incorrect");
+        document.body.appendChild(textNode);
+        event.preventDefault;
+      }
+    });
   }
-  button.addEventListener("click", function () {
-    alert("hello");
-  });
 }
