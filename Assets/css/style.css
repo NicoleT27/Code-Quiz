@@ -49,22 +49,27 @@
 }
 #questions {
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   font-family: var(--font-style);
 }
 #questionTitle {
   margin-top: -80px;
+  text-align: left;
+  margin-left: 50px ;
+  margin-bottom: 100px;
 }
 .options {
   background-color: blueviolet;
   font-family: var(--font-style);
-  font-size: 60px;
+  font-size: 50px;
   border-radius: 5px;
   display: block;
-  margin-left: 490px;
-  padding-right: 600px;
+  margin-left: 400px;
+  padding-right: 100px;
   margin-top: 30px;
+  width: 50%;
+  text-align: left;
 }
 .options:hover {
   background-color: rgb(238, 98, 238);
@@ -77,5 +82,3 @@
     inline-size: 600px;
   }
 }
-
-

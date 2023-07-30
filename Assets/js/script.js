@@ -4,48 +4,54 @@ var subHeading = document.querySelector("#subHeading");
 var countdown = document.getElementById("countdown");
 var hr = document.createElement("hr");
 var counter = 0;
-
+var timerEnd;
 function startQuiz() {
   button1.setAttribute("style", "display: none;");
   header.innerText = null;
   subHeading.innerText = null;
-  setInterval(startTime, 1000);
+  timerEnd = setInterval(startTime, 1000);
   showQuestion();
 }
 
 var startingMinutes = 10;
 var time = startingMinutes * 60;
+var multiChoice = [
+  {
+    title:
+      "_______ is the process of finding errors and fixing them within a program.",
+    choices: ["Compiling", "Executing", "Debugging", "Scanning"],
+    correctA: "Debugging",
+  },
+  {
+    title:
+      "Sal needs to execute a section of code ten times within a program. Compare the selection structures below and select which one meets the needs identified?",
+    choices: ["If-Else", "For", "While", "If"],
+    correctA: "For",
+  },
+  {
+    title: "A loop that never ends is referred to as a(n)_________.?",
+    choices: ["While loop", "Infinite loop", "Recursive loop", "For loop"],
+    correctA: "Infinite loop",
+  },
+];
 
 function startTime() {
   var minutes = Math.floor(time / 60);
   var seconds = time % 60;
-
   seconds = seconds < 10 ? "0" + seconds : seconds;
 
   countdown.innerHTML = ` ${minutes} : ${seconds}`;
   time--;
+  if (time < 0) {
+    clearInterval(timerEnd);
+  }
 }
 
 startBtn.addEventListener("click", startQuiz);
-
+var score = 0;
 function showQuestion() {
-  var multiChoice = [
-    {
-      title: "How many letters in JS?",
-      choices: ["1", "2", "3", "4"],
-      correctA: "2",
-    },
-    {
-      title: "How many letters in CSS?",
-      choices: ["1", "2", "3", "4"],
-      correctA: "3",
-    },
-    {
-      title: "How many letters in HTML?",
-      choices: ["1", "2", "3", "4"],
-      correctA: "4",
-    },
-  ];
+  document.getElementById("choices").textContent = "";
+
   var questions = document.getElementById("questions");
   questions.classList.remove("hide");
   var currentQuestion = multiChoice[counter];
@@ -58,20 +64,31 @@ function showQuestion() {
     var button = document.createElement("button");
     button.innerText = currentChoice;
     button.setAttribute("class", "options");
+
     document.getElementById("choices").appendChild(button);
 
     button.addEventListener("click", function (event) {
       var buttonResult = event.target.innerText;
 
       if (buttonResult === currentQuestion.correctA) {
-        document.getElementById("choices").appendChild(hr);
-        var textNode = document.createTextNode("Correct!");
-        document.body.appendChild(textNode);
+        setTimeout(() => {
+          document.getElementById("result").textContent = " Correct";
+        }, 50);
+        document.getElementById("result").textContent = "";
+       
+        score++;
+        counter++;
+        showQuestion();
       } else {
-        document.getElementById("choices").appendChild(hr);
-        var textNode = document.createTextNode("Incorrect");
-        document.body.appendChild(textNode);
+        setTimeout(() => {
+          document.getElementById("result").textContent = "Incorrect";
+        }, 50);
+        document.getElementById("result").textContent = "";
         event.preventDefault;
+        score--;
+        counter++;
+        time = time - 10;
+        showQuestion();
       }
     });
   }
