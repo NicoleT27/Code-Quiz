@@ -5,6 +5,9 @@ var countdown = document.getElementById("countdown");
 var hr = document.createElement("hr");
 var result = document.getElementById("result");
 var initals = document.getElementById("initals");
+var points = document.getElementById("points");
+var highScoreEl = document.getElementById("highscores");
+var leaderboardEl = document.getElementById("leaderboard");
 var counter = 0;
 var score = 0;
 var timerEnd;
@@ -141,7 +144,6 @@ function showQuestion() {
         setTimeout(() => {
           result.textContent = "Incorrect";
         }, 50);
-        score--;
         setTimeout(() => {
           result.textContent = "";
         }, 700);
@@ -155,7 +157,11 @@ function showQuestion() {
     });
   }
 }
+
 function endQuiz() {
+  if (score < 0) {
+    score = 0;
+  }
   var questionsTitle = document.getElementById("questionTitle");
   questionsTitle.setAttribute("style", "display:none");
   setTimeout(() => {
@@ -173,19 +179,50 @@ function endQuiz() {
   button.innerText = "Submit";
   button.setAttribute("id", "submit");
   document.body.appendChild(button);
-  var leaderboard = "scores.js";
   button.addEventListener("click", function () {
-    window.location.href = "scores.js";
+    leaderboard = submit();
   });
+
+  button.addEventListener("click", submit);
 
   var a = document.createElement("a");
   var link = document.createTextNode("Back to Homepage");
   a.appendChild(link);
-  a.setAttribute("style", "font-size:30px; margin-left:400px;");
+  a.setAttribute("style", "font-size:30px; margin-left:650px;");
   a.href = "index.html";
   document.body.appendChild(a);
+}
+function submit() {
+  submit = document.getElementById("submit");
+  submit.setAttribute("style", "display:none");
+  button = document.getElementById("clear");
+  button.setAttribute("style", "display:block");
+  var scoreBoard = JSON.parse(localStorage.getItem("totalScore")) || [];
+  var totalScore = {
+    initals: initals.value,
+    points: score,
+  };
 
-  // display user input box,
-  // display button that user can click that will submit the initials
-  // when the button is clicked you get all of the high scores from the local storage and display them.
+  scoreBoard.push(totalScore);
+
+  localStorage.setItem("score", JSON.stringify(scoreBoard));
+
+  // var clear = document.getElementById("clear");
+  // clear.addEventListener("click", function () {
+  //   window.localStorage.clear();
+  // });
+  leaderboardEl.removeAttribute("class");
+  highScoreEl.removeAttribute("class");
+  leaderDisplay(scoreBoard);
+}
+function leaderDisplay(scoreBoard) {
+  var scoreBoard = JSON.parse(localStorage.getItem("totalScore")) || [];
+  console.log(scoreBoard);
+  for (let i = 0; i < scoreBoard.length; i++) {
+    console.log(scoreBoard);
+    var liEl = document.createElement("li");
+    liEl.textContent = scoreBoard[i].initals + scoreBoard[i].points;
+    console.log(scoreBoard[i].initals + scoreBoard[i].points);
+    highScoreEl.appendChild(liEl);
+  }
 }

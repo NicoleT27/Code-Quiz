@@ -15,7 +15,7 @@
   <body>
     <div>
       <a
-        href="scores.js"
+        href=""
         id="scoreLink"
         class="highscore"
         style="float: left; margin-top: -170px; margin-left: 20px"
@@ -32,9 +32,9 @@
     >
       Time Remaining:<span id="countdown">10:00</span>
     </div>
-    <header id="header">
-      <h1>Coding Quiz Challange</h1>
-    </header>
+    <h1 id="header">
+      Coding Quiz Challange
+    </h1>
     <main>
       <p id="subHeading">
         Try to answer the code-related questions within the time limit. Keep in
@@ -47,13 +47,18 @@
         <p id="questionTitle"></p>
         <div id="choices"></div>
         <span id="result"> </span>
-        <form>
+        <div>
           <div id="yourScore" class="hide"></div>
           <input type="text" id="initals" class="hide" placeholder="Type Initals Here"></input>
           <p id="highscore"></p>
-        </form>
+        </div>
     </footer>
+     <h1 id="leaderboard" class="hide">Leaderboard</h1>
+    <ul id="highscores" class="hide">HighScores</ul>
+    <!-- <p id="points" class="hide"></p> -->
+    <button type="button" id="clear">Clear Leaderboard</button>
+    <div id="homepage" class="hide"><a href="index.html">Back to homepage</a></div>
     <script src="Assets/js/script.js"></script>
-    <script src="Assets/js/scores.js"></script>
   </body>
 </html>
+
