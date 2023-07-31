@@ -4,7 +4,9 @@ var subHeading = document.querySelector("#subHeading");
 var countdown = document.getElementById("countdown");
 var hr = document.createElement("hr");
 var result = document.getElementById("result");
+var initals = document.getElementById("initals");
 var counter = 0;
+var score = 0;
 var timerEnd;
 function startQuiz() {
   button1.setAttribute("style", "display: none;");
@@ -23,69 +25,69 @@ var multiChoice = [
     choices: ["Compiling", "Executing", "Debugging", "Scanning"],
     correctA: "Debugging",
   },
-  //   {
-  //     title:
-  //       "Sal needs to execute a section of code ten times within a program. Compare the selection structures below and select which one meets the needs identified?",
-  //     choices: ["If-Else", "For", "While", "If"],
-  //     correctA: "For",
-  //   },
-  //   {
-  //     title: "A loop that never ends is referred to as a(n)_________.?",
-  //     choices: ["While loop", "Infinite loop", "Recursive loop", "For loop"],
-  //     correctA: "Infinite loop",
-  //   },
-  //   {
-  //     title:
-  //       "What is the term used for a block of code that is executed repeatedly until a certain condition is met?",
-  //     choices: ["Function", "Loop", "Condition", "Variable"],
-  //     correctA: "Loop",
-  //   },
-  //   {
-  //     title:
-  //       "Which data structure is used for storing a collection of elements in a non-linear fashion?",
-  //     choices: ["Array", "Stack", "Queue", "Tree"],
-  //     correctA: "Tree",
-  //   },
-  //   {
-  //     title: "Which of the following is not a web browser?",
-  //     choices: ["Chrome", "Safari", "Firefox", "Photoshop"],
-  //     correctA: "Photoshop",
-  //   },
-  //   {
-  //     title: "Which of the following is not a programming language?",
-  //     choices: ["HTML", "CSS", "MySQL", "JavaScript"],
-  //     correctA: "MySQL",
-  //   },
-  //   {
-  //     title: "Which of the following is a type of computer network?",
-  //     choices: [
-  //       "Local Area Network (LAN)",
-  //       "Wide Area Network (WAN)",
-  //       "Metropolitan Area Network (MAN)",
-  //       "All of the above",
-  //     ],
-  //     correctA: "All of the above",
-  //   },
-  //   {
-  //     title: "During program development, software requirements specify?",
-  //     choices: [
-  //       " How the program will accomplish the task",
-  //       "What the task is that the program will perform.",
-  //       "How to divide the task into subtasks",
-  //       "How to test the program when it is done",
-  //     ],
-  //     correctA: "What the task is that the program will perform.",
-  //   },
-  //   {
-  //     title: "What does HTML stand for?",
-  //     choices: [
-  //       "Hyper Trainer Marking Language",
-  //       "Hyper Text Marketing Language",
-  //       "Hyper Text Markup Language",
-  //       "Hyper Text Markup Leveler",
-  //     ],
-  //     correctA: "Hyper Text Markup Language",
-  //   },
+  {
+    title:
+      "Sal needs to execute a section of code ten times within a program. Compare the selection structures below and select which one meets the needs identified?",
+    choices: ["If-Else", "For", "While", "If"],
+    correctA: "For",
+  },
+  // {
+  //   title: "A loop that never ends is referred to as a(n)_________.?",
+  //   choices: ["While loop", "Infinite loop", "Recursive loop", "For loop"],
+  //   correctA: "Infinite loop",
+  // },
+  // {
+  //   title:
+  //     "What is the term used for a block of code that is executed repeatedly until a certain condition is met?",
+  //   choices: ["Function", "Loop", "Condition", "Variable"],
+  //   correctA: "Loop",
+  // },
+  // {
+  //   title:
+  //     "Which data structure is used for storing a collection of elements in a non-linear fashion?",
+  //   choices: ["Array", "Stack", "Queue", "Tree"],
+  //   correctA: "Tree",
+  // },
+  // {
+  //   title: "Which of the following is not a web browser?",
+  //   choices: ["Chrome", "Safari", "Firefox", "Photoshop"],
+  //   correctA: "Photoshop",
+  // },
+  // {
+  //   title: "Which of the following is not a programming language?",
+  //   choices: ["HTML", "CSS", "MySQL", "JavaScript"],
+  //   correctA: "MySQL",
+  // },
+  // {
+  //   title: "Which of the following is a type of computer network?",
+  //   choices: [
+  //     "Local Area Network (LAN)",
+  //     "Wide Area Network (WAN)",
+  //     "Metropolitan Area Network (MAN)",
+  //     "All of the above",
+  //   ],
+  //   correctA: "All of the above",
+  // },
+  // {
+  //   title: "During program development, software requirements specify?",
+  //   choices: [
+  //     " How the program will accomplish the task",
+  //     "What the task is that the program will perform.",
+  //     "How to divide the task into subtasks",
+  //     "How to test the program when it is done",
+  //   ],
+  //   correctA: "What the task is that the program will perform.",
+  // },
+  // {
+  //   title: "What does HTML stand for?",
+  //   choices: [
+  //     "Hyper Trainer Marking Language",
+  //     "Hyper Text Marketing Language",
+  //     "Hyper Text Markup Language",
+  //     "Hyper Text Markup Leveler",
+  //   ],
+  //   correctA: "Hyper Text Markup Language",
+  // },
 ];
 
 function startTime() {
@@ -101,10 +103,13 @@ function startTime() {
 }
 
 startBtn.addEventListener("click", startQuiz);
-var score = 0;
 
 function showQuestion() {
   document.getElementById("choices").textContent = "";
+  if (counter == multiChoice.length) {
+    endQuiz();
+    return;
+  }
 
   var questions = document.getElementById("questions");
   questions.classList.remove("hide");
@@ -129,32 +134,58 @@ function showQuestion() {
           result.textContent = " Correct";
         }, 50);
         score++;
-        // setTimeout(() => {
-        //   counter++;
-        //   result.textContent = "";
-        //   showQuestion();
-        // }, 1000);
+        setTimeout(() => {
+          result.textContent = "";
+        }, 700);
       } else {
         setTimeout(() => {
           result.textContent = "Incorrect";
         }, 50);
         score--;
-        // setTimeout(() => {
-        //   counter++;
-        //   showQuestion();
-        //   result.textContent = "";
-        // }, 1000);
+        setTimeout(() => {
+          result.textContent = "";
+        }, 700);
 
         time = time - 10;
       }
+      setTimeout(() => {
+        counter++;
+        showQuestion();
+      }, 450);
     });
   }
 }
-var initals = document.getElementById("initals");
+function endQuiz() {
+  var questionsTitle = document.getElementById("questionTitle");
+  questionsTitle.setAttribute("style", "display:none");
+  setTimeout(() => {
+    result.textContent = "";
+  }, 0);
 
-var totalScore = {
-  initals: initals.value,
-  points: score.value,
-};
+  var yourScore = document.getElementById("yourScore");
+  yourScore.classList.remove("hide");
+  yourScore.classList.add("show");
+  yourScore.textContent = "Yourscore is" + " " + [score];
+  initals.classList.remove("hide");
+  initals.classList.add("show");
 
-localStorage.setItem("score", JSON.stringify(totalScore));
+  var button = document.createElement("button");
+  button.innerText = "Submit";
+  button.setAttribute("id", "submit");
+  document.body.appendChild(button);
+  var leaderboard = "scores.js";
+  button.addEventListener("click", function () {
+    window.location.href = "scores.js";
+  });
+
+  var a = document.createElement("a");
+  var link = document.createTextNode("Back to Homepage");
+  a.appendChild(link);
+  a.setAttribute("style", "font-size:30px; margin-left:400px;");
+  a.href = "index.html";
+  document.body.appendChild(a);
+
+  // display user input box,
+  // display button that user can click that will submit the initials
+  // when the button is clicked you get all of the high scores from the local storage and display them.
+}

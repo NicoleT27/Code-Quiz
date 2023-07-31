@@ -15,7 +15,8 @@
   <body>
     <div>
       <a
-        href="index.html"
+        href="scores.js"
+        id="scoreLink"
         class="highscore"
         style="float: left; margin-top: -170px; margin-left: 20px"
         >View high scores</a
@@ -47,10 +48,12 @@
         <div id="choices"></div>
         <span id="result"> </span>
         <form>
-          <input type="text" id="initals" class="hide" placeholder="Type initals here"></input>
-          <a href="index.html" class="hide">Back to Homepage</a>
+          <div id="yourScore" class="hide"></div>
+          <input type="text" id="initals" class="hide" placeholder="Type Initals Here"></input>
+          <p id="highscore"></p>
         </form>
     </footer>
     <script src="Assets/js/script.js"></script>
+    <script src="Assets/js/scores.js"></script>
   </body>
 </html>
