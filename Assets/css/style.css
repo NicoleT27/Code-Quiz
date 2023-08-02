@@ -1,10 +1,7 @@
-:root {
-  --font-style: "Ubuntu", sans-serif;
-}
 * {
-  font-family: var(--font-style);
+  font-family: "Ubuntu", sans-serif;
 }
-#header,
+#heading,
 #subHeading,
 #startBtn {
   margin-top: 200px;
@@ -13,7 +10,7 @@
   text-decoration: none;
   font-size: 20px;
 }
-#header {
+#heading {
   font-size: 50px;
   text-align: center;
 }
@@ -52,7 +49,6 @@
   text-align: center;
   font-size: 40px;
   font-weight: bold;
-  font-family: var(--font-style);
 }
 #questionTitle {
   margin-top: -80px;
@@ -62,7 +58,7 @@
 }
 .options {
   background-color: blueviolet;
-  font-family: var(--font-style);
+
   font-size: 50px;
   border-radius: 5px;
   display: block;
@@ -74,7 +70,7 @@
 }
 #submit {
   background-color: blueviolet;
-  font-family: var(--font-style);
+
   font-size: 50px;
   border-radius: 5px;
   display: block;
@@ -86,7 +82,8 @@
   margin-bottom: 30px;
 }
 .options:hover,
-#submit:hover {
+#submit:hover,
+#clear:hover {
   background-color: rgb(238, 98, 238);
   transition: all 150ms ease-in-out;
 }
@@ -98,13 +95,10 @@
 #leaderboard {
   font-size: 90px;
   text-align: center;
-  font-family: var(--font-style);
-  /* margin-top: -50px; */
 }
 #highscores {
   text-align: center;
   font-size: 60px;
-  font-family: var(--font-style);
 }
 #homepage {
   text-align: center;
@@ -123,5 +117,16 @@ li {
   #subHeading {
     overflow-wrap: break-word;
     inline-size: 600px;
+  }
+  #questionTitle {
+    text-align: left;
+  }
+  .options {
+    margin-left: 50px;
+    padding-right: 20px;
+  }
+  #initals,
+  #submit {
+    margin-left: 150px;
   }
 }

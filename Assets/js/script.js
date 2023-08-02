@@ -1,5 +1,5 @@
 var startBtn = document.querySelector("#startBtn");
-var header = document.querySelector("#header");
+var heading = document.querySelector("#heading");
 var subHeading = document.querySelector("#subHeading");
 var countdown = document.getElementById("countdown");
 var result = document.getElementById("result");
@@ -17,7 +17,7 @@ var timerEnd;
 
 function startQuiz() {
   startBtn.setAttribute("style", "display: none;");
-  header.innerText = null;
+  heading.innerText = null;
   subHeading.innerText = null;
   timerEnd = setInterval(startTime, 1000);
   showQuestion();
@@ -98,15 +98,15 @@ var multiChoice = [
 ];
 
 function startTime() {
-   var minutes = Math.floor(time / 60);
-   var seconds = time % 60;
-   seconds = seconds < 10 ? "0" + seconds : seconds;
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+  seconds = seconds < 10 ? "0" + seconds : seconds;
 
-   countdown.innerHTML = ` ${minutes} : ${seconds}`;
-   time--;
-   if (time < 0) {
-     clearInterval(timerEnd);
-   }
+  countdown.innerHTML = ` ${minutes} : ${seconds}`;
+  time--;
+  if (time < 0) {
+    clearInterval(timerEnd);
+  }
 }
 
 startBtn.addEventListener("click", startQuiz);
@@ -234,7 +234,7 @@ function leaderDisplay(scoreBoard) {
 }
 
 scoreLink.addEventListener("click", function () {
-  header.classList.add("hide");
+  heading.classList.add("hide");
   subHeading.classList.add("hide");
   startBtn.setAttribute("style", "display:none;");
   leaderboard.setAttribute("style", "margin-top:200px;");

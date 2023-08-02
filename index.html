@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coding Quiz</title>
     <link rel="stylesheet" href="Assets/css/style.css" />
+    <!-- Added Google Fonts to have a uniform look throughout page -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,6 +14,8 @@
     />
   </head>
   <body>
+  <header>
+    <!-- This div will allow user to be able to fast forward to the Score board without needing to go through quiz -->
     <div id="scoreLink"class="highscore"style="float: left; margin-top: -170px; margin-left: 20px">View high scores</div>
     <div
       style="
@@ -22,37 +25,47 @@
         margin-top: -165px;
       "
     >
+    <!-- The user is given 5 minutes to complete a quiz of 10 questions. The countdown allows user to be aware of time constraint-->
       Time Remaining: <span id="countdown">5:00</span>
     </div>
-    <h1 id="header">
+    <h1 id="heading">
       Coding Quiz Challange
     </h1>
+  </header>
     <main>
       <p id="subHeading">
         Try to answer the code-related questions within the time limit. Keep in
         mind that incorrect answers will penalize your score/time by 10 seconds!
       </p>
+      <!-- Button below is added to offically start timer as well as initiate the 10 questions. -->
       <button type="button" id="startBtn">Start Quiz</button>
-    </main>
-    <footer>
       <div id="questions" class="hide">
         <p id="questionTitle"></p>
         <div id="choices"></div>
         <span id="result"> </span>
         <div>
+          <!-- Following the completion of the questions the user will be given the total amount of points 
+            they scored based of correctness -->
           <div id="yourScore" class="hide"></div>
+          <!-- The user is given the ability to type their initals and save their score, 
+            should they choose not to their score will be saved without a name making it anonymous -->
           <input type="text" id="initals" class="hide" placeholder="Type Initals Here"></input>
           <p id="highscore"></p>
         </div>
-    </footer>
-    <section>
+      </main>
+      <footer>
     <div  id="endPage" class="hide">
+      <!-- The user will be directed after having clicked the submit button that was dynamically added via javascript, 
+      and the leaderboard along with all the scores will present themselves
+       -->
      <h1 id="leaderboard">Leaderboard</h1>
     <ul id="highscores">HighScores</ul>
     </div>
-  </section>
+    <!-- Lastly the user is given the ability to either click the clear leaderboard to reset quiz scores or 
+    they can opt to head back to the homepage to complete quiz once more and try to have a higher score -->
     <button type="button" id="clear">Clear Leaderboard</button>
     <div id="homepage" class="hide"><a href="index.html">Back to homepage</a></div>
+    </footer>
     <script src="Assets/js/script.js"></script>
   </body>
 </html>
