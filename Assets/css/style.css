@@ -11,7 +11,7 @@
   font-size: 20px;
 }
 #heading {
-  font-size: 50px;
+  font-size: 40px;
   text-align: center;
 }
 #subHeading {
@@ -54,12 +54,11 @@
   margin-top: -80px;
   text-align: center;
   margin-left: 50px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 .options {
   background-color: blueviolet;
-
-  font-size: 50px;
+  font-size: 39px;
   border-radius: 5px;
   display: block;
   margin-left: 400px;
@@ -70,11 +69,10 @@
 }
 #submit {
   background-color: blueviolet;
-
-  font-size: 50px;
+  font-size: 40px;
   border-radius: 5px;
   display: block;
-  margin-left: 400px;
+  margin-left: 350px;
   padding-right: 100px;
   margin-top: 30px;
   width: 50.5%;
@@ -89,16 +87,17 @@
 }
 #initals {
   font-size: 50px;
-  margin-left: 400px;
+  margin-left: 350px;
   width: 50%;
+  margin-top: 20px;
 }
 #leaderboard {
-  font-size: 90px;
+  font-size: 75px;
   text-align: center;
 }
 #highscores {
   text-align: center;
-  font-size: 60px;
+  font-size: 50px;
 }
 #homepage {
   text-align: center;
