@@ -1,18 +1,21 @@
-var button1 = document.querySelector("#startBtn");
+var startBtn = document.querySelector("#startBtn");
 var header = document.querySelector("#header");
 var subHeading = document.querySelector("#subHeading");
 var countdown = document.getElementById("countdown");
-var hr = document.createElement("hr");
 var result = document.getElementById("result");
 var initals = document.getElementById("initals");
 var points = document.getElementById("points");
 var highScoreEl = document.getElementById("highscores");
 var leaderboardEl = document.getElementById("leaderboard");
+var yourScore = document.getElementById("yourScore");
+var scoreLink = document.getElementById("scoreLink");
+var button = document.createElement("button");
 var counter = 0;
 var score = 0;
 var timerEnd;
+
 function startQuiz() {
-  button1.setAttribute("style", "display: none;");
+  startBtn.setAttribute("style", "display: none;");
   header.innerText = null;
   subHeading.innerText = null;
   timerEnd = setInterval(startTime, 1000);
@@ -168,14 +171,12 @@ function endQuiz() {
     result.textContent = "";
   }, 0);
 
-  var yourScore = document.getElementById("yourScore");
   yourScore.classList.remove("hide");
   yourScore.classList.add("show");
   yourScore.textContent = "Yourscore is" + " " + [score];
   initals.classList.remove("hide");
   initals.classList.add("show");
 
-  var button = document.createElement("button");
   button.innerText = "Submit";
   button.setAttribute("id", "submit");
   document.body.appendChild(button);
@@ -188,13 +189,18 @@ function endQuiz() {
   var a = document.createElement("a");
   var link = document.createTextNode("Back to Homepage");
   a.appendChild(link);
-  a.setAttribute("style", "font-size:30px; margin-left:650px;");
+  a.setAttribute("style", "font-size:30px; margin-left:659px;");
   a.href = "index.html";
   document.body.appendChild(a);
 }
 function submit() {
-  submit = document.getElementById("submit");
-  submit.setAttribute("style", "display:none");
+  button.setAttribute("style", "display:none;");
+  yourScore.classList.remove("show");
+  yourScore.classList.add("hide");
+  var endPage = document.getElementById("endPage");
+  endPage.removeAttribute("class");
+  initals.classList.remove("show");
+  initals.classList.add("hide");
   button = document.getElementById("clear");
   button.setAttribute("style", "display:block");
   var scoreBoard = JSON.parse(localStorage.getItem("totalScore")) || [];
@@ -205,19 +211,20 @@ function submit() {
 
   scoreBoard.push(totalScore);
 
-  localStorage.setItem("score", JSON.stringify(scoreBoard));
+  localStorage.setItem("score", JSON.stringify(totalScore));
 
-  // var clear = document.getElementById("clear");
-  // clear.addEventListener("click", function () {
-  //   window.localStorage.clear();
-  // });
-  leaderboardEl.removeAttribute("class");
-  highScoreEl.removeAttribute("class");
+  var clear = document.getElementById("clear");
+  clear.addEventListener("click", function () {
+    window.localStorage.clear();
+  });
+
   leaderDisplay(scoreBoard);
 }
 function leaderDisplay(scoreBoard) {
-  var scoreBoard = JSON.parse(localStorage.getItem("totalScore")) || [];
+  scoreLink.setAttribute("style", "display:none");
+  var scoreBoard = JSON.parse(localStorage.getItem("score")) || [];
   console.log(scoreBoard);
+
   for (let i = 0; i < scoreBoard.length; i++) {
     console.log(scoreBoard);
     var liEl = document.createElement("li");
@@ -226,3 +233,17 @@ function leaderDisplay(scoreBoard) {
     highScoreEl.appendChild(liEl);
   }
 }
+
+scoreLink.addEventListener("click", function () {
+  header.classList.add("hide");
+  subHeading.classList.add("hide");
+  startBtn.setAttribute("style", "display:none;");
+  leaderboard.setAttribute("style", "margin-top:200px;");
+  submit();
+  var aLink = document.createElement("a");
+  var homeLink = document.createTextNode("Back to Homepage");
+  aLink.appendChild(homeLink);
+  aLink.setAttribute("style", "font-size:30px; margin-left:659px;");
+  aLink.href = "index.html";
+  document.body.appendChild(aLink);
+});
